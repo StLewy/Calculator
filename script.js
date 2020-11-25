@@ -1,37 +1,40 @@
-const firsNumber = document.getElementById("firtNumber")
-const secondNumber = document.getElementById("secondNumber")
-const select = document.getElementById("select");
-const count = document.getElementById("count");
-let div = document.getElementById("div");
-let p =document.createElement("p");
-p.setAttribute("class", "bold");
-let sum = 0
 
 
-count.addEventListener("click", function () {
-    if (firsNumber.value === "" || secondNumber.value === ""){
-        alert("Podaj dwie liczby!")
-    } else {
-        switch (select.value) {
-            case "add": {
-                sum = parseInt(firsNumber.value) + parseInt(secondNumber.value)
-                break
-            }
-            case "sub": {
-                sum = parseInt(firsNumber.value) - parseInt(secondNumber.value)
-                break
-            }
-            case "multiply": {
-                sum = parseInt(firsNumber.value) * parseInt(secondNumber.value)
-                break
-            }
-            case "divide": {
-                sum = parseInt(firsNumber.value) / parseInt(secondNumber.value)
-                break
-            }
-        }
-        div.appendChild(p);
-        p.innerHTML = "<p>WYNIK: " + sum + "</p>";
-    }
-})
 
+window.onload = function () {
+
+    const count = document.getElementById('count');
+    const div = document.getElementById('container');
+    const p =document.createElement('p');
+    p.setAttribute("class", 'bold');
+    let sum = 0;
+
+    count.addEventListener("click", function () {
+        const select = document.getElementById('selected');
+        let firstNumber = parseFloat(document.getElementById('firstNumber').value);
+        let secondNumber = parseFloat(document.getElementById('secondNumber').value);
+
+        if (!isNaN(firstNumber)  && !isNaN(secondNumber)) {
+            switch (select.value) {
+                case "add": {
+                    sum = firstNumber + secondNumber
+                    break
+                }
+                case "sub": {
+                    sum = firstNumber - secondNumber
+                    break
+                }
+                case "multiply": {
+                    sum = firstNumber * secondNumber
+                    break
+                }
+                case "divide": {
+                    sum = firstNumber / secondNumber
+                    break
+                }
+            }
+            div.appendChild(p);
+            p.innerHTML = "<p>WYNIK: " + sum + "</p>";
+        } else   { alert ("Podaj dwie liczby!")}
+    })
+}
